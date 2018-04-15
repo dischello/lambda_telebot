@@ -2,8 +2,8 @@ import requests
 
 def lambda_handler(event, context):
     print(event)
-    print("Done")
-    send_message(event["message"]["from"]["id"], event["message"]["text"])
+    data=event
+    send_message(data["message"]["from"]["id"], data["message"]["text"])
 
 def send_message(chat_id, text):
     url = "https://api.telegram.org/bot{token}/{method}".format(
