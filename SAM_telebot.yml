@@ -13,11 +13,13 @@ Resources:
       MemorySize: 128
       Timeout: 3
       Role: arn:aws:iam::853805328779:role/service-role/microservice
+      Environment:
+        Variables:
+          APIStage: !Ref Stage
       Events:
         Api1:
           Type: Api
           Properties:
-            StageName: dv01
             Path: /telebot
             Method: POST
 Parameters: 
