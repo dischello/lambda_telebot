@@ -2,7 +2,7 @@ import requests
 import os
 
 token = os.environ["APIStage"]
-tokens = {'dev': "504709962:AAEb2zGgMy2rBMrMnwBIBTtkjAHhKRC7XS8",'stage':"", '550333385:AAGrL-1HQFvgmemw42jRGsoZkO-lHTQTcK0': "563678020:AAGPx21beePzxBqRFQAnQqEb0gA_LURyfho"}
+tokens = {'dev': "504709962:AAEb2zGgMy2rBMrMnwBIBTtkjAHhKRC7XS8",'stage':"550333385:AAGrL-1HQFvgmemw42jRGsoZkO-lHTQTcK0", 'prod': "563678020:AAGPx21beePzxBqRFQAnQqEb0gA_LURyfho"}
 
 def lambda_handler(event, context):
     send_message(event["message"]["from"]["id"], event["message"]["text"])
