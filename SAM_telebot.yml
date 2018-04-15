@@ -1,0 +1,53 @@
+
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  teleBot:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python2.7
+      CodeUri: ./code
+      Description: ''
+      MemorySize: 128
+      Timeout: 3
+      Role: arn:aws:iam::853805328779:role/service-role/microservice
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /telebot
+            Method: POST
+
+#AWSTemplateFormatVersion: '2010-09-09'
+#Transform: 'AWS::Serverless-2016-10-31'
+#Description: Lambda handler for API Gateway
+#Resources:
+#  LambdaFunction:
+#    Type: 'AWS::Serverless::Function'
+#    Properties:
+#      Handler: lambda_function.lambda_handler
+#      Runtime: python3.6
+#      CodeUri: s3://telebotlabda/lamdba-telebot/telebot.zip
+#      Description: Lambda handler for API Gateway - Twilio integration
+#      MemorySize: 128
+#      Timeout: 60
+#      Role: 'arn:aws:iam::853805328779:role/service-role/teleBot'
+#      Events:
+#        Api1:
+#          Type: Api
+#          Properties:
+#            Path: /teleBot
+#            Method: POST
+
+#Outputs:
+#  ApiUrl:
+#    Description: URL of your API endpoint
+#    Value: !Join
+#      - ''
+#      - - https://
+#        - !Ref ApiGatewayApi
+#        - '.execute-api.'
+#        - !Ref 'AWS::Region'
+#        - '.amazonaws.com/Prod'
