@@ -7,13 +7,13 @@ pipeline {
 		stage ('Build artifact') { 
 			steps {
                 checkout scm
-                sh 'aws cloudformation package --template-file ./SAM_telebot.yml --s3-bucket telebotlabda --output-template-file package-template.yml'
+                sh 'sudo su; aws cloudformation package --template-file ./SAM_telebot.yml --s3-bucket telebotlabda --output-template-file package-template.yml'
 			}
 		}
         stage ('Deploy') { 
 			steps {
                 checkout scm
-                sh 'aws cloudformation deploy --template-file ./package-template.yml --stack-name LabdaFirstDeploy --capabilities CAPABILITY_IAM'
+                sh 'sudo su; aws cloudformation deploy --template-file ./package-template.yml --stack-name LabdaFirstDeploy --capabilities CAPABILITY_IAM'
 			}
 		}
 	}
