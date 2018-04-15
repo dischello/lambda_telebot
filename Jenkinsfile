@@ -1,5 +1,4 @@
 pipeline {
-	agent master 
 	options {
 		disableConcurrentBuilds() // Disable concurent builds
 	}
