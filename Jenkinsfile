@@ -24,7 +24,7 @@ pipeline {
             input {
                 message "Should we deploy to prod"
                 ok "Yes, we should."
-                submitter "God`s will"
+                submitter "admin"
             }
 			steps {
                 sh 'aws cloudformation deploy --template-file ./package-template.yml --stack-name ProdEnv --parameter-overrides Stage=prod --capabilities CAPABILITY_IAM'
