@@ -12,12 +12,12 @@ pipeline {
 		}
         stage ('Deploy::DEV') { 
 			steps {
-                sh 'aws cloudformation deploy --template-file ./package-template.yml --stack-name LabdaFirstDeploy --capabilities CAPABILITY_IAM --parameters  Stage=dev'
+                sh 'aws cloudformation deploy --template-file ./package-template.yml --stack-name LabdaFirstDeploy --parameter-overrides Stage=dev --capabilities CAPABILITY_IAM'
 			}
 		}
         stage ('Deploy::Stage') { 
 			steps {
-                sh 'aws cloudformation deploy --template-file ./package-template.yml --stack-name LabdaFirstDeploy --capabilities CAPABILITY_IAM --parameters  Stage=stage'
+                sh 'aws cloudformation deploy --template-file ./package-template.yml --stack-name LabdaFirstDeploy --parameter-overrides Stage=stage --capabilities CAPABILITY_IAM'
 			}
 		}
         stage ('Deploy::Prod') { 
@@ -27,7 +27,7 @@ pipeline {
                 submitter "God`s will"
             }
 			steps {
-                sh 'aws cloudformation deploy --template-file ./package-template.yml --stack-name LabdaFirstDeploy --capabilities CAPABILITY_IAM --parameters  Stage=prod'
+                sh 'aws cloudformation deploy --template-file ./package-template.yml --stack-name LabdaFirstDeploy --parameter-overrides Stage=prod --capabilities CAPABILITY_IAM'
 			}
 		}
 	}
