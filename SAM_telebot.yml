@@ -17,9 +17,18 @@ Resources:
         Api1:
           Type: Api
           Properties:
+            StageName: dv01
             Path: /telebot
             Method: POST
-
+Parameters: 
+  Stage: 
+    Type: String
+    Default: dev
+    AllowedValues: 
+      - dev
+      - stage
+      - prod
+    Description: Enter dev, stage or prod
 #AWSTemplateFormatVersion: '2010-09-09'
 #Transform: 'AWS::Serverless-2016-10-31'
 #Description: Lambda handler for API Gateway

@@ -1,13 +1,19 @@
 pipeline {
     agent { label 'master' } 
 	options {
-		disableConcurrentBuilds() // Disable concurent builds
+		disableConcurrentBuilds() 
 	}
 	stages {
-		stage ('Preparation::Common') { // Common preparation for Build
+		stage ('Build artifact') { 
 			steps {
                 checkout scm
-                sh 'ls -al'
+                sh 'aws cloudformation package --template-file ./SAM_telebot.yml --s3-bucket telebotlabda --output-template-file package-template.yml'
+			}
+		}
+        stage ('Deploy') { 
+			steps {
+                checkout scm
+                sh 'aws cloudformation deploy --template-file ./package-template.yml --stack-name LabdaFirstDeploy --capabilities CAPABILITY_IAM'
 			}
 		}
 	}
