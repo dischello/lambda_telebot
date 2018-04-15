@@ -1,5 +1,5 @@
 pipeline {
-	agent any /
+	agent master 
 	options {
 		disableConcurrentBuilds() // Disable concurent builds
 	}
@@ -12,16 +12,4 @@ pipeline {
 			}
 		}
 	}
-    post { // Post-build actions
-    	success {
-    	}
-    	unstable {
-    	}
-    	failure {
-    	}
-    	aborted {
-    	}
-        always {
-        }
-    }
 }
