@@ -1,8 +1,9 @@
 import requests
 
 def lambda_handler(event, context):
-    print(event)
+
     data=event
+    print(data.json())
     send_message(data["message"]["from"]["id"], data["message"]["text"])
 
 def send_message(chat_id, text):
